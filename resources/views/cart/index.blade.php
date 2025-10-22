@@ -71,11 +71,10 @@
 
             <div class="bg-white rounded-md px-4 py-6 h-max shadow-sm border border-gray-200">
                 <ul class="text-slate-500 font-medium space-y-4">
-                    <li class="flex flex-wrap gap-4 text-sm">Subtotal <span class="ml-auto font-semibold text-slate-900">$200.00</span></li>
-                    <li class="flex flex-wrap gap-4 text-sm">Shipping <span class="ml-auto font-semibold text-slate-900">$2.00</span></li>
-                    <li class="flex flex-wrap gap-4 text-sm">Tax <span class="ml-auto font-semibold text-slate-900">$4.00</span></li>
+                    <li class="flex flex-wrap gap-4 text-sm">Shipping <span class="ml-auto font-semibold text-slate-900">200'000₮</span></li>
+                    <li class="flex flex-wrap gap-4 text-sm">Tax <span class="ml-auto font-semibold text-slate-900">100'000₮</span></li>
                     <hr class="border-slate-300" />
-                    <li class="flex flex-wrap gap-4 text-sm font-semibold text-slate-900">Нийт дүн <span class="ml-auto">{{ number_format($subtotal) }} ₮</span></li>
+                    <li class="flex flex-wrap gap-4 text-sm font-semibold text-slate-900">Нийт дүн <span class="ml-auto" id="subtotal">{{ number_format($subtotal) }} ₮</span></li>
                 </ul>
                 <div class="mt-8 space-y-4">
                     <a href="{{ route('order.save') }}" type="button" class="block text-center text-sm px-4 py-2.5 w-full font-medium tracking-wide bg-slate-800 hover:bg-slate-900 text-white rounded-md cursor-pointer">
@@ -114,6 +113,8 @@
             }
 
             document.querySelector(`.cart-row[data-id="${id}"] .qty`).textContent = data.quantity;
+
+            document.querySelector(`#subtotal`).textContent = data.subtotal.toLocaleString() + '₮';
 
         }
     </script>

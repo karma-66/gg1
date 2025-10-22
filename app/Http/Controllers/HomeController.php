@@ -20,7 +20,7 @@ class HomeController extends Controller
             'search' => 'required',
         ]);
 
-        $products = Product::where('name','like',"%{$validated['search']}%")->get();
+        $products = Product::where('name','like',"%{$validated['search']}%")->paginate(4);
 
         return view('home',compact('products'));
     }
